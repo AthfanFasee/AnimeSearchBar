@@ -1,25 +1,43 @@
-import logo from './logo.svg';
+import React from 'react';
+import SearchBar from "./Components/SearchBar";
+import axios from "axios";
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+class App extends React.Component {
+
+
+  state = {
+    books: []
+  }
+
+    
+  
+  componentDidMount() {
+    const getData = async () => {
+      try {
+        const {data} = await axios.request('https://animechan.vercel.app/api/available/anime');
+        this.setState({books: data});
+      } catch (err) {
+        alert(err);
+      }      
+    }
+    getData();
+
+    
+  }
+
+  
+
+
+  render() {
+    return (
+      <div className="App">
+       <SearchBar data={this.state.books}/>
+      </div>
+    );
+
+  }
 }
 
 export default App;
