@@ -43,7 +43,7 @@ class SearchBar extends React.Component {
                 {this.state.filteredData.length !== 0 &&
                 <div className="dataResult">
                     {this.state.filteredData.slice(0, 15).map((name, key) => {
-                        return <a className="dataItem"><p>{name}</p></a>
+                        return <a href="##" className="dataItem"><p>{name}</p></a>
                     })}
                 </div>
                 }
