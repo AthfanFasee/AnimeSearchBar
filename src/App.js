@@ -8,7 +8,7 @@ class App extends React.Component {
 
 
   state = {
-    books: []
+    anime: []
   }
 
     
@@ -17,7 +17,7 @@ class App extends React.Component {
     const getData = async () => {
       try {
         const {data} = await axios.request('https://animechan.vercel.app/api/available/anime');
-        this.setState({books: data});
+        this.setState({anime: data});
       } catch (err) {
         alert(err);
       }      
@@ -33,7 +33,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-       <SearchBar data={this.state.books}/>
+       <SearchBar data={this.state.anime}/>
       </div>
     );
 
